@@ -23,6 +23,15 @@ Author URI: http://andrewnorcross.com
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+/**
+ * Load plugin's translated strings
+ */
+function rkv_load_textdomain() {
+	load_plugin_textdomain( 'gist-sidebar-widget', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' ); 
+}
+
+add_action( 'plugins_loaded', 'rkv_load_textdomain' );
+
 // add admin CSS for my error message
 function rkv_gist_widget_css() {
 	echo "
@@ -40,8 +49,8 @@ add_action('admin_head', 'rkv_gist_widget_css');
 class rkv_ListGistsWidget extends WP_Widget {
     /** constructor */
 	function rkv_ListGistsWidget() {
-		$widget_ops = array( 'classname' => 'list_gists', 'description' => 'Displays a list of gists hosted on GitHub' );
-		$this->WP_Widget( 'list_gists', 'Public GitHub Gists', $widget_ops );
+		$widget_ops = array( 'classname' => 'list_gists', 'description' => __( 'Displays a list of gists hosted on GitHub', 'gist-sidebar-widget' ) );
+		$this->WP_Widget( 'list_gists', __( 'Public GitHub Gists', 'gist-sidebar-widget' ), $widget_ops );
 	}
 
 	
@@ -52,7 +61,7 @@ class rkv_ListGistsWidget extends WP_Widget {
 	// first check for a username. can't do much without it
 	$user	= $instance['github_user'];
 	if (empty ($user) ) {
-		echo '<p>Please enter a username in the widget settings</p>';
+		echo '<p>' . __( 'Please enter a username in the widget settings', 'gist-sidebar-widget' ) . '</p>';
 	} else {
 
 		// check for stored transient. if none present, create one
@@ -88,7 +97,7 @@ class rkv_ListGistsWidget extends WP_Widget {
 
 			// check for bad response from GitHub
 			if( is_wp_error( $response ) ) {
-				echo '<p>Sorry, there was an error with your request.</p>';
+				echo '<p>' . __( 'Sorry, there was an error with your request.', 'gist-sidebar-widget' ) . '</p>';
 			} else {
 				$gist_list	= json_decode( $response['body'] );
 
@@ -110,18 +119,22 @@ class rkv_ListGistsWidget extends WP_Widget {
 			// grab date and convert it to a readable format
 			$create	= $gist->created_at;
 			$create	= strtotime($create);
-			$create	= date('n/j/Y', $create);
+			$create	= date_i18n(get_option('date_format'), $create);
 	
 			// check for missing values and replace them if necessary
-			( $desc == null) ? $title = 'Gist ID: '.$gistid : $title = $desc;
-			( empty ($text) ) ? $text = 'Github Profile' : $text = $text;
+			( $desc == null) ? $title = __( 'Gist ID:', 'gist-sidebar-widget' ) . ' ' . $gistid : $title = $desc;
+			( empty ($text) ) ? $text = __( 'GitHub Profile', 'gist-sidebar-widget' ) : $text = $text;
 			
 			// display list of gists
 				echo '<li class="gist_item">';
 				echo '<a class="gist_title" href="'.$url.'" title="'.$title.'" target="_blank">'.$title.'</a>';
 				
 				// include optional date
-				if ($date == 1) : echo '<br /><span class="gist_date">Created: '.$create.'</span>'; endif;
+				if ($date == 1) :
+					echo '<br /><span class="gist_date">';
+					printf( __( 'Created: %s', 'gist-sidebar-widget' ), $create );
+					echo '</span>';
+				endif;
 
 				echo '</li>';
 			} // end foreach
@@ -161,7 +174,7 @@ class rkv_ListGistsWidget extends WP_Widget {
 			'title'			=> '',
 			'github_user'	=> '',
 			'gists_num'		=> '',
-			'link_text'		=> 'See my GitHub profile',
+			'link_text'		=> __( 'See my GitHub profile', 'gist-sidebar-widget' ),
 			'show_date'		=> 0,
 			'show_link'		=> 0,
 			));
@@ -175,31 +188,31 @@ class rkv_ListGistsWidget extends WP_Widget {
 		$link_text		= strip_tags($instance['link_text']);
         ?>
 		<p>
-        <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Widget Title'); ?></label>
+        <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'gist-sidebar-widget'); ?></label>
         <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
         </p>
 		<p>
-        <label for="<?php echo $this->get_field_id('github_user'); ?>"><?php _e('GitHub username'); ?></label>
+        <label for="<?php echo $this->get_field_id('github_user'); ?>"><?php _e('GitHub username:', 'gist-sidebar-widget'); ?></label>
         <input class="widefat" id="<?php echo $this->get_field_id('github_user'); ?>" name="<?php echo $this->get_field_name('github_user'); ?>" type="text" value="<?php echo esc_attr($github_user); ?>" />
-        <?php if (empty ($github_user) ) :	echo '<span class="gist_error_message">Username is required!</span>'; endif; ?>
+        <?php if (empty ($github_user) ) :	echo '<span class="gist_error_message">' . __( 'Username is required!', 'gist-sidebar-widget' ) . '</span>'; endif; ?>
         </p>
         
 		<p>
-        <label for="<?php echo $this->get_field_id('gists_num'); ?>"><?php _e('Gists to display'); ?></label>
+        <label for="<?php echo $this->get_field_id('gists_num'); ?>"><?php _e('Gists to display:', 'gist-sidebar-widget'); ?></label>
         <input class="widefat" id="<?php echo $this->get_field_id('gists_num'); ?>" name="<?php echo $this->get_field_name('gists_num'); ?>" type="text" value="<?php echo esc_attr($gists_num); ?>" />
         </p>
         <br />
-		<p><strong>Optional Values</strong></p>
+		<p><strong><?php _e( 'Optional Values', 'gist-sidebar-widget' ); ?></strong></p>
         <p>
         <input class="checkbox" type="checkbox" <?php checked($instance['show_date'], true) ?> id="<?php echo $this->get_field_id('show_date'); ?>" name="<?php echo $this->get_field_name('show_date'); ?>" />
-		<label for="<?php echo $this->get_field_id('show_date'); ?>"><?php _e('Display creation date'); ?></label>
+		<label for="<?php echo $this->get_field_id('show_date'); ?>"><?php _e('Display creation date', 'gist-sidebar-widget'); ?></label>
         </p>
 		<p>
         <input class="checkbox" type="checkbox" <?php checked($instance['show_link'], true) ?> id="<?php echo $this->get_field_id('show_link'); ?>" name="<?php echo $this->get_field_name('show_link'); ?>" />
-		<label for="<?php echo $this->get_field_id('show_link'); ?>"><?php _e('Include link to Github profile'); ?></label>
+		<label for="<?php echo $this->get_field_id('show_link'); ?>"><?php _e('Include link to GitHub profile', 'gist-sidebar-widget'); ?></label>
         </p>
 		<p>
-        <label for="<?php echo $this->get_field_id('link_text'); ?>"><?php _e('Profile link text'); ?></label>
+        <label for="<?php echo $this->get_field_id('link_text'); ?>"><?php _e('Profile link text:', 'gist-sidebar-widget'); ?></label>
         <input class="widefat" id="<?php echo $this->get_field_id('link_text'); ?>" name="<?php echo $this->get_field_name('link_text'); ?>" type="text" value="<?php echo esc_attr($link_text); ?>" />
         </p>
         

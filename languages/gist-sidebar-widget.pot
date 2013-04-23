@@ -1,0 +1,97 @@
+# Copyright (C) 2010 GitHub Gists Sidebar Widget
+# This file is distributed under the same license as the GitHub Gists Sidebar Widget package.
+msgid ""
+msgstr ""
+"Project-Id-Version: GitHub Gists Sidebar Widget 1.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/gist-sidebar-widget\n"
+"POT-Creation-Date: 2013-04-23 01:00:53+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: gist-sidebar-widget.php:52
+msgid "Displays a list of gists hosted on GitHub"
+msgstr ""
+
+#: gist-sidebar-widget.php:53
+msgid "Public GitHub Gists"
+msgstr ""
+
+#: gist-sidebar-widget.php:64
+msgid "Please enter a username in the widget settings"
+msgstr ""
+
+#: gist-sidebar-widget.php:100
+msgid "Sorry, there was an error with your request."
+msgstr ""
+
+#: gist-sidebar-widget.php:125
+msgid "Gist ID:"
+msgstr ""
+
+#: gist-sidebar-widget.php:126
+msgid "GitHub Profile"
+msgstr ""
+
+#: gist-sidebar-widget.php:135
+msgid "Created: %s"
+msgstr ""
+
+#: gist-sidebar-widget.php:177
+msgid "See my GitHub profile"
+msgstr ""
+
+#: gist-sidebar-widget.php:191
+msgid "Title:"
+msgstr ""
+
+#: gist-sidebar-widget.php:195
+msgid "GitHub username:"
+msgstr ""
+
+#: gist-sidebar-widget.php:197
+msgid "Username is required!"
+msgstr ""
+
+#: gist-sidebar-widget.php:201
+msgid "Gists to display:"
+msgstr ""
+
+#: gist-sidebar-widget.php:205
+msgid "Optional Values"
+msgstr ""
+
+#: gist-sidebar-widget.php:208
+msgid "Display creation date"
+msgstr ""
+
+#: gist-sidebar-widget.php:212
+msgid "Include link to GitHub profile"
+msgstr ""
+
+#: gist-sidebar-widget.php:215
+msgid "Profile link text:"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "GitHub Gists Sidebar Widget"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://andrewnorcross.com/plugins"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "A sidebar widget to display your public gists from GitHub."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "norcross"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://andrewnorcross.com"
+msgstr ""
