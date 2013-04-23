@@ -1,0 +1,96 @@
+# Translation of Public GitHub Gists in Portuguese (Brazil)
+# This file is distributed under the same license as the Public GitHub Gists package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2013-04-22 22:02-0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: GlotPress/0.1\n"
+"Project-Id-Version: Public GitHub Gists\n"
+"POT-Creation-Date: \n"
+"Last-Translator: Eduardo Zulian <eduardozulian@gmail.com>\n"
+"Language-Team: \n"
+"X-Poedit-Language: Portuguese\n"
+"X-Poedit-Country: BRAZIL\n"
+
+#: gist-sidebar-widget.php:197
+msgid "Username is required!"
+msgstr "O nome de usuário é obrigatório!"
+
+#: gist-sidebar-widget.php:212
+msgid "Include link to GitHub profile"
+msgstr "Incluir link para o perfil no GitHub"
+
+msgid "http://andrewnorcross.com/plugins"
+msgstr "http://andrewnorcross.com/plugins"
+
+msgid "A sidebar widget to display your public gists from GitHub."
+msgstr "Um widget que exibe seus gists públicos direto do GitHub."
+
+msgid "norcross"
+msgstr "norcross"
+
+msgid "http://andrewnorcross.com"
+msgstr "http://andrewnorcross.com"
+
+#: gist-sidebar-widget.php:52
+msgid "Displays a list of gists hosted on GitHub"
+msgstr "Exibe uma lista dos gists hospedados no GitHub"
+
+#: gist-sidebar-widget.php:53
+msgid "Public GitHub Gists"
+msgstr "Gists Públicos do GitHub"
+
+#: gist-sidebar-widget.php:64
+msgid "Please enter a username in the widget settings"
+msgstr "Por favor, digite seu nome de usuário nas configurações do widget"
+
+#: gist-sidebar-widget.php:100
+msgid "Sorry, there was an error with your request."
+msgstr "Desculpe, mas ocorreu um erro em sua solicitação."
+
+#: gist-sidebar-widget.php:125
+msgid "Gist ID:"
+msgstr "ID do Gist:"
+
+#: gist-sidebar-widget.php:126
+msgid "GitHub Profile"
+msgstr "Perfil no GitHub"
+
+#: gist-sidebar-widget.php:135
+msgid "Created: %s"
+msgstr "Criado em %s"
+
+#: gist-sidebar-widget.php:177
+msgid "See my GitHub profile"
+msgstr "Veja meu perfil no GitHub"
+
+#: gist-sidebar-widget.php:191
+msgid "Title:"
+msgstr "Título:"
+
+#: gist-sidebar-widget.php:195
+msgid "GitHub username:"
+msgstr "Nome de usuário no GitHub:"
+
+#: gist-sidebar-widget.php:201
+msgid "Gists to display:"
+msgstr "Número de gists a exibir:"
+
+#: gist-sidebar-widget.php:205
+msgid "Optional Values"
+msgstr "Valores opcionais"
+
+#: gist-sidebar-widget.php:208
+msgid "Display creation date"
+msgstr "Exibir data de criação"
+
+#: gist-sidebar-widget.php:215
+msgid "Profile link text:"
+msgstr "Texto do link para o perfil:"
+
+msgid "GitHub Gists Sidebar Widget"
+msgstr "GitHub Gists Sidebar Widget"
+
